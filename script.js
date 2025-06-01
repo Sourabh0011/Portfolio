@@ -101,47 +101,18 @@
 
         // Hamburger Menu Toggle
         const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu'); // Keep for desktop, though its 'active' state is CSS-driven by screen size
-        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+        const navMenu = document.querySelector('.nav-menu');
 
         hamburger.addEventListener('click', () => {
-            mobileNavOverlay.classList.toggle('active');
-            hamburger.textContent = mobileNavOverlay.classList.contains('active') ? '✕' : '☰';
-            if (mobileNavOverlay.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            navMenu.classList.toggle('active');
+            hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.mobile-nav-items a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavOverlay.classList.remove('active');
-                hamburger.textContent = '☰';
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Original desktop menu link click listener (if it's still needed for any specific desktop behavior)
-        // For this task, we are primarily concerned with the mobile menu.
-        // If the '.nav-menu a' listener caused issues or was purely for a mobile-like dropdown on desktop,
-        // it might need adjustment. Assuming it's fine or handled by CSS for desktop.
+        // Close menu when a link is clicked
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                // This code originally closed the '.nav-menu' (desktop menu).
-                // If '.nav-menu' is always visible on desktop and not a dropdown,
-                // this specific part might not have a visible effect on desktop anymore.
-                // However, if it's for SPA navigation or similar, it might still be relevant.
-                // For now, let's ensure it doesn't interfere with the mobile overlay.
-                // If navMenu can also be 'active' on desktop for some reason, ensure it's closed.
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    // Only reset hamburger if mobile is not also active (edge case)
-                    if (!mobileNavOverlay.classList.contains('active')) {
-                        hamburger.textContent = '☰';
-                    }
-                }
+                navMenu.classList.remove('active');
+                hamburger.textContent = '☰';
             });
         });
 

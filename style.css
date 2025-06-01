@@ -154,87 +154,6 @@
             display: flex;
         }
 
-        /* Mobile Navigation Overlay */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95); /* Darker overlay */
-            z-index: 999; /* Below navbar (which is 1000), but above other content */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            backdrop-filter: blur(5px); /* Optional: if performance allows */
-        }
-
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-nav-items {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        .mobile-nav-items li {
-            margin: 1.5rem 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-
-        /* Staggered animation for list items when menu is active */
-        .mobile-nav-overlay.active .mobile-nav-items li {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-nav-overlay.active .mobile-nav-items li:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-nav-overlay.active .mobile-nav-items li:nth-child(2) { transition-delay: 0.2s; }
-        .mobile-nav-overlay.active .mobile-nav-items li:nth-child(3) { transition-delay: 0.3s; }
-        .mobile-nav-overlay.active .mobile-nav-items li:nth-child(4) { transition-delay: 0.4s; }
-        .mobile-nav-overlay.active .mobile-nav-items li:nth-child(5) { transition-delay: 0.5s; }
-
-
-        .mobile-nav-items a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.8rem; /* Larger font for mobile menu */
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .mobile-nav-items a:hover,
-        .mobile-nav-items a:active {
-            color: #00ff88; /* Neon green accent */
-            transform: scale(1.1);
-        }
-
-        /* Ensure hamburger is above the overlay when menu is open, if needed */
-        /* The .hamburger is already z-index: 1001, so it should be fine. */
-
-        /* Hide .mobile-nav-overlay on desktop views */
-        @media (min-width: 769px) {
-            .mobile-nav-overlay {
-                display: none !important; /* Ensure it's not shown on desktop */
-            }
-        }
-
-        /* Adjustments for when desktop nav links become hidden by hamburger */
-        /* The existing .nav-menu handles its own display:none in @media (max-width: 768px) */
-        /* The .hamburger becomes display:block in @media (max-width: 768px) */
-
-
         /* Hero Section */
         #hero {
             height: 100vh;
@@ -733,21 +652,6 @@
                 padding: 1rem;
             }
 
-            /* Reduce developer image glow on medium screens */
-            .developer-img {
-                animation: neonGlow 4s ease-in-out infinite; /* Slower and less intense */
-            }
-
-            @keyframes neonGlow { /* Redefine for less intensity if needed, or adjust directly */
-                0%, 100% { box-shadow: 0 0 8px #00ff88, 0 0 15px #00ff88; }
-                50% { box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88; }
-            }
-
-            /* Optionally, simplify skill bubble float */
-            .skill-bubble {
-                animation: float 6s ease-in-out infinite; /* Slower float */
-            }
-
             .nav-logo h1 {
                 font-size: 1.5rem;
             }
@@ -857,22 +761,6 @@
 
             .popup p {
                 font-size: 0.85rem;
-            }
-
-            /* Disable neonGlow and float for smaller screens */
-            .developer-img {
-                animation: none; /* Disable glow */
-                border: 3px solid #00ff88; /* Keep border for consistency */
-                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); /* Static subtle shadow */
-            }
-
-            .skill-bubble {
-                animation: none; /* Disable float */
-            }
-
-            .social-link:hover img,
-            .social-link:active img {
-                filter: brightness(0) invert(1); /* Remove drop-shadow for performance */
             }
         }
 
@@ -1024,21 +912,7 @@
             .popup p {
                 font-size: 0.75rem;
             }
-
-            /* Ensure animations disabled here too if not covered by 480px */
-            .developer-img {
-                animation: none; /* Disable glow */
-                border: 3px solid #00ff88;
-                box-shadow: 0 0 8px rgba(0, 255, 136, 0.2); /* Even more subtle static shadow */
-            }
-
-            .skill-bubble {
-                animation: none; /* Disable float */
-            }
         }
-        /* CLEANUP: Removing duplicate #resume styles. These were identified during review. */
-        /* The correct #resume styles are assumed to be the first set encountered in the file. */
-        /*
         Below is the Resume section HTML and CSS extracted from the updated portfolio website (index.html). This includes only the relevant HTML for the <section id="resume"> and the CSS styles specific to #resume and .resume-container, ensuring the styling is consistent with the site's neon-futuristic theme, centered layout, and responsive design.
 
 Resume Section HTML
@@ -1054,9 +928,7 @@ html
 Resume Section CSS
 css
 
-*/
-/* The following #resume styles are duplicated and will be removed. */
-/*
+/* Resume Section */
 #resume {
     padding: 4rem 1.5rem;
     text-align: center;
@@ -1101,10 +973,8 @@ css
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
-*/
 
-/* Responsive Design - These specific duplicated media queries for #resume are also removed */
-/*
+/* Responsive Design */
 @media (max-width: 768px) {
     #resume {
         padding: 3rem 1rem;
@@ -1134,10 +1004,7 @@ css
         font-size: 0.85rem;
     }
 }
-*/
 
-/* These styles for #resume with .resume-embed seem to be the second version, also removed for cleanup */
-/*
 #resume {
         padding: 4rem 1.5rem;
         text-align: center;
@@ -1171,9 +1038,8 @@ css
     .resume-embed:active {
         box-shadow: 0 0 30px rgba(0, 255, 136, 0.7);
     }
-*/
+
     /* Responsive Design */
-/*
     @media (max-width: 768px) {
         #resume {
             padding: 3rem 1rem;
@@ -1203,4 +1069,3 @@ css
             height: 350px;
         }
     }
-*/
